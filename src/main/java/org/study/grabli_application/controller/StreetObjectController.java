@@ -31,7 +31,9 @@ public class StreetObjectController {
     private String servletContextPath;
 
     private void setImageUrl(StreetObjectDto dto) {
-        dto.setImage(servletContextPath + "/street-objects/images/" + dto.getImage());
+        if (dto.getImage() != null) {
+            dto.setImage(servletContextPath + "/street-objects/images/" + dto.getImage());
+        }
     }
 
     @GetMapping
@@ -44,7 +46,7 @@ public class StreetObjectController {
     @PostMapping
     public StreetObjectDto saveStreetObject(
             @Valid @RequestPart("info") StreetObjectDtoCreate requestDto,
-            @RequestPart("image") MultipartFile image
+            @RequestPart(value = "image", required = false) MultipartFile image
     ) {
         StreetObjectDto responseDto = streetObjectService.save(requestDto, image);
         setImageUrl(responseDto);

@@ -33,7 +33,7 @@ public class StreetObject {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "image", nullable = false, unique = true)
+    @Column(name = "image", unique = true)
     private String image;
 
     @Column(name = "creator_name", nullable = false)

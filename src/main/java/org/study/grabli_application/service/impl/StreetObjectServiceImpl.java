@@ -31,7 +31,7 @@ public class StreetObjectServiceImpl implements StreetObjectService {
     @Override
     public StreetObjectDto save(StreetObjectDtoCreate dto, MultipartFile image) {
         StreetObject streetObject = streetObjectMapper.toEntity(dto);
-        streetObject.setImage(imageService.save(image));
+        setImage(streetObject, image);
         return streetObjectMapper.toDto(streetObjectRepository.save(streetObject));
     }
 
@@ -65,5 +65,11 @@ public class StreetObjectServiceImpl implements StreetObjectService {
         return streetObjectRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Объект не найден")
         );
+    }
+
+    private void setImage(StreetObject streetObject, MultipartFile image) {
+        if (image != null) {
+            streetObject.setImage(imageService.save(image));
+        }
     }
 }
