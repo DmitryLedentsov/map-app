@@ -64,8 +64,10 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public void delete(String fileName) {
         try {
-            Path path = uploadPath.resolve(fileName);
-            Files.deleteIfExists(path);
+            if (fileName != null) {
+                Path path = uploadPath.resolve(fileName);
+                Files.deleteIfExists(path);
+            }
         } catch (IOException e) {
             throw new ImageStorageException("Ошибка при удалении файла " + fileName);
         }
