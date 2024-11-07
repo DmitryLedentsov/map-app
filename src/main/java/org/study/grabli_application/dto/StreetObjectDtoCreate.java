@@ -22,10 +22,10 @@ public class StreetObjectDtoCreate {
     @NotBlank(message = ValidationUtils.BLANK_FIELD)
     private String description;
 
-    @NotBlank(message = ValidationUtils.BLANK_FIELD)
+    // @NotBlank(message = ValidationUtils.BLANK_FIELD)
     private String creatorName;
 
-    @NotBlank(message = ValidationUtils.BLANK_FIELD)
+    // @NotBlank(message = ValidationUtils.BLANK_FIELD)
     @Email(message = ValidationUtils.INVALID_EMAIL)
     private String creatorContact;
 }

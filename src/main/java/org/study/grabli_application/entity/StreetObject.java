@@ -36,10 +36,10 @@ public class StreetObject {
     @Column(name = "image", unique = true)
     private String image;
 
-    @Column(name = "creator_name", nullable = false)
+    @Column(name = "creator_name"/*, nullable = false*/)
     private String creatorName;
 
-    @Column(name = "creator_contact", nullable = false)
+    @Column(name = "creator_contact"/*, nullable = false*/)
     private String creatorContact;
 
     @Column(name = "approved")
